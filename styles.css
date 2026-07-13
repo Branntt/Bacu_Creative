@@ -8,7 +8,7 @@
   --grey: #9AA39C;
 
   --font-display: "Fraunces", "Georgia", serif;
-  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: "IBM Plex Mono", "SF Mono", ui-monospace, monospace;
 
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   color-scheme: dark;
@@ -162,17 +162,20 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
   padding: 21px 24px;
   border-radius: 999px;
   border: 1px solid rgba(245, 243, 237, 0.14);
   background: rgba(245, 243, 237, 0.02);
   text-decoration: none;
+  text-align: center;
   color: var(--white);
   font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 16.5px;
-  letter-spacing: -0.015em;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   overflow: hidden;
   transition: transform 0.35s var(--ease), background-color 0.35s var(--ease), border-color 0.35s var(--ease);
   -webkit-user-select: none;
