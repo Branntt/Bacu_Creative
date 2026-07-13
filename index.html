@@ -18,26 +18,7 @@
 <canvas id="bg-canvas" aria-hidden="true"></canvas>
 
 <div id="intro" role="presentation">
-  <svg id="eye" viewBox="0 0 200 120" width="140" height="84" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <radialGradient id="pupilGlow" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#0A0C0A"/>
-        <stop offset="100%" stop-color="#000000"/>
-      </radialGradient>
-      <filter id="eyeGlow" x="-60%" y="-60%" width="220%" height="220%">
-        <feGaussianBlur stdDeviation="4" result="blur"/>
-        <feMerge>
-          <feMergeNode in="blur"/>
-          <feMergeNode in="SourceGraphic"/>
-        </feMerge>
-      </filter>
-    </defs>
-    <g id="eyeGroup" filter="url(#eyeGlow)">
-      <path id="eyeShape" d="M2,60 C40,10 160,10 198,60 C160,110 40,110 2,60 Z" fill="none" stroke="#3E8C6F" stroke-width="2.5"/>
-      <circle id="pupil" cx="100" cy="60" r="26" fill="url(#pupilGlow)" stroke="#3E8C6F" stroke-width="1.5"/>
-      <circle id="pupilCore" cx="100" cy="60" r="9" fill="#3E8C6F"/>
-    </g>
-  </svg>
+  <img id="eye" src="assets/bacu-eye.png" alt="BACU" width="220" height="138">
 
   <div id="introText">
     <h1 id="wordmark">BACU CREATIVE</h1>
@@ -47,11 +28,7 @@
 
 <main id="content" aria-hidden="true">
   <header class="hub-header">
-    <svg class="mark" viewBox="0 0 200 120" width="46" height="28" xmlns="http://www.w3.org/2000/svg">
-      <path d="M2,60 C40,10 160,10 198,60 C160,110 40,110 2,60 Z" fill="none" stroke="#3E8C6F" stroke-width="4"/>
-      <circle cx="100" cy="60" r="26" fill="#0A0C0A" stroke="#3E8C6F" stroke-width="2.5"/>
-      <circle cx="100" cy="60" r="9" fill="#3E8C6F"/>
-    </svg>
+    <img class="mark" src="assets/bacu-eye.png" alt="BACU" width="64" height="40">
     <h1 class="hub-title">BACU CREATIVE</h1>
     <p class="hub-tagline">Crafting cinematic stories.</p>
   </header>

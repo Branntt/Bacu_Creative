@@ -58,12 +58,11 @@ body {
 }
 
 #eye {
+  width: clamp(130px, 34vw, 190px);
+  height: auto;
   opacity: 0;
   transform: scale(0.92);
-}
-
-#eyeShape, #pupil, #pupilCore {
-  transform-origin: 100px 60px;
+  filter: drop-shadow(0 0 22px rgba(62, 140, 111, 0.35));
 }
 
 #introText {
@@ -112,8 +111,11 @@ body {
 }
 
 .hub-header .mark {
+  width: 56px;
+  height: auto;
   margin-bottom: 18px;
   opacity: 0.95;
+  filter: drop-shadow(0 0 10px rgba(62, 140, 111, 0.3));
 }
 
 .hub-title {

@@ -101,8 +101,6 @@
   const intro = document.getElementById("intro");
   const content = document.getElementById("content");
   const eye = document.getElementById("eye");
-  const eyeShape = document.getElementById("eyeShape");
-  const pupil = document.getElementById("pupil");
   const introText = document.getElementById("introText");
   const cards = document.querySelectorAll(".card");
 
@@ -136,16 +134,16 @@
     });
 
     tl.to(eye, { opacity: 1, scale: 1, duration: 1.1, ease: "power2.out" })
-      .to(eyeShape, { scaleY: 1.03, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, "<0.2")
+      .to(eye, { scaleY: 1.025, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, "<0.2")
       // slow organic blink
-      .to([eyeShape, pupil], { scaleY: 0.08, duration: 0.16, ease: "power1.in" }, "+=0.5")
-      .to([eyeShape, pupil], { scaleY: 1, duration: 0.28, ease: "power2.out" })
+      .to(eye, { scaleY: 0.08, duration: 0.16, ease: "power1.in" }, "+=0.5")
+      .to(eye, { scaleY: 1, duration: 0.28, ease: "power2.out" })
       .to(introText, { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, "-=0.1")
       .to({}, { duration: 0.9 }); // hold before dismiss
   }
 
   function skipIntro() {
-    gsap.killTweensOf([eye, eyeShape, pupil, introText, intro]);
+    gsap.killTweensOf([eye, introText, intro]);
     intro.style.display = "none";
     revealContent();
   }
