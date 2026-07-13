@@ -232,9 +232,11 @@ body {
 .card--featured .card-label {
   font-family: var(--font-display);
   font-optical-sizing: auto;
-  font-weight: 800;
-  font-size: 25px;
-  letter-spacing: -0.01em;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 23px;
+  letter-spacing: 0.06em;
+  color: var(--white);
 }
 
 .hub-footer {
