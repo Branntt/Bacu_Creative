@@ -8,7 +8,7 @@
   --grey: #9AA39C;
 
   --font-display: "Fraunces", "Georgia", serif;
-  --font-body: "IBM Plex Mono", "SF Mono", ui-monospace, monospace;
+  --font-body: "Space Mono", "SF Mono", ui-monospace, monospace;
 
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   color-scheme: dark;
@@ -98,7 +98,7 @@ body {
 
 #tagline {
   font-family: var(--font-body);
-  font-weight: 500;
+  font-weight: 400;
   font-size: 11.5px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -144,7 +144,7 @@ body {
 
 .hub-tagline {
   font-family: var(--font-body);
-  font-weight: 500;
+  font-weight: 400;
   font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -172,9 +172,9 @@ body {
   text-align: center;
   color: var(--white);
   font-family: var(--font-body);
-  font-weight: 500;
-  font-size: 14px;
-  letter-spacing: 0.06em;
+  font-weight: 700;
+  font-size: 13.5px;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   overflow: hidden;
   transition: transform 0.35s var(--ease), background-color 0.35s var(--ease), border-color 0.35s var(--ease);
@@ -240,8 +240,8 @@ body {
 .hub-footer {
   margin-top: 52px;
   text-align: center;
-  font-size: 11px;
-  font-weight: 500;
+  font-size: 10.5px;
+  font-weight: 400;
   letter-spacing: 0.1em;
   color: rgba(154, 163, 156, 0.6);
 }
