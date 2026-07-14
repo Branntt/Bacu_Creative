@@ -18,7 +18,10 @@
 <canvas id="bg-canvas" aria-hidden="true"></canvas>
 
 <div id="intro" role="presentation">
-  <img id="eye" src="assets/bacu-eye.png" alt="BACU" width="220" height="138">
+  <div class="eye-wrap" id="eyeWrap">
+    <img id="eye" src="assets/bacu-eye.png" alt="BACU" width="220" height="138">
+    <div class="pupil" id="pupilIntro"></div>
+  </div>
 
   <div id="introText">
     <h1 id="wordmark">BACU CREATIVE</h1>
@@ -28,7 +31,10 @@
 
 <main id="content" aria-hidden="true">
   <header class="hub-header">
-    <img class="mark" src="assets/bacu-eye.png" alt="BACU" width="64" height="40">
+    <div class="mark-wrap" id="markWrap">
+      <img class="mark" src="assets/bacu-eye.png" alt="BACU" width="64" height="40">
+      <div class="pupil pupil--mark" id="pupilMark"></div>
+    </div>
     <h1 class="hub-title">BACU CREATIVE</h1>
     <p class="hub-tagline">Qué energía. Gracias por tu tiempo.</p>
   </header>

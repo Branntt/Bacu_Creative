@@ -24,6 +24,7 @@
       a: Math.random() * 0.5 + 0.15,
       drift: Math.random() * 0.4 - 0.2,
     }));
+    updatePupilBounds();
   }
 
   function tick() {
@@ -48,7 +49,37 @@
       ctx.fillStyle = `rgba(62, 140, 111, ${p.a})`;
       ctx.fill();
     }
+
+    moveEyes();
     requestAnimationFrame(tick);
+  }
+
+  /* ---------- pupil tracking ---------- */
+
+  const pupilConfigs = [
+    { el: document.getElementById("pupilIntro"), maxX: 0, maxY: 0 },
+    { el: document.getElementById("pupilMark"), maxX: 0, maxY: 0 },
+  ];
+
+  function updatePupilBounds() {
+    for (const cfg of pupilConfigs) {
+      if (!cfg.el) continue;
+      const wrap = cfg.el.parentElement;
+      const rect = wrap.getBoundingClientRect();
+      cfg.maxX = rect.width * 0.045;
+      cfg.maxY = rect.height * 0.05;
+    }
+  }
+
+  function moveEyes() {
+    const nx = (POINTER.x - 0.5) * 2;
+    const ny = (POINTER.y - 0.5) * 2;
+    for (const cfg of pupilConfigs) {
+      if (!cfg.el) continue;
+      const dx = nx * cfg.maxX;
+      const dy = ny * cfg.maxY;
+      cfg.el.style.transform = `translate(calc(-50% + ${dx.toFixed(2)}px), calc(-50% + ${dy.toFixed(2)}px))`;
+    }
   }
 
   window.addEventListener("resize", resize, { passive: true });
@@ -100,7 +131,8 @@
 
   const intro = document.getElementById("intro");
   const content = document.getElementById("content");
-  const eye = document.getElementById("eye");
+  const eyeWrap = document.getElementById("eyeWrap");
+  const markWrap = document.getElementById("markWrap");
   const introText = document.getElementById("introText");
   const cards = document.querySelectorAll(".card");
 
@@ -133,20 +165,47 @@
       },
     });
 
-    tl.to(eye, { opacity: 1, scale: 1, duration: 1.1, ease: "power2.out" })
-      .to(eye, { scaleY: 1.025, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, "<0.2")
+    tl.to(eyeWrap, { opacity: 1, scale: 1, duration: 1.1, ease: "power2.out" })
+      .to(eyeWrap, { scaleY: 1.025, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, "<0.2")
       // slow organic blink
-      .to(eye, { scaleY: 0.08, duration: 0.16, ease: "power1.in" }, "+=0.5")
-      .to(eye, { scaleY: 1, duration: 0.28, ease: "power2.out" })
+      .to(eyeWrap, { scaleY: 0.08, duration: 0.16, ease: "power1.in" }, "+=0.5")
+      .to(eyeWrap, { scaleY: 1, duration: 0.28, ease: "power2.out" })
       .to(introText, { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, "-=0.1")
       .to({}, { duration: 0.9 }); // hold before dismiss
   }
 
   function skipIntro() {
-    gsap.killTweensOf([eye, introText, intro]);
+    gsap.killTweensOf([eyeWrap, introText, intro]);
     intro.style.display = "none";
     revealContent();
   }
+
+  /* ---------- idle blink loop for the persistent header eye ---------- */
+
+  function blink(target) {
+    gsap.to(target, {
+      scaleY: 0.08,
+      duration: 0.09,
+      ease: "power1.in",
+      onComplete: () => {
+        gsap.to(target, { scaleY: 1, duration: 0.16, ease: "power2.out" });
+      },
+    });
+  }
+
+  function scheduleBlink(target) {
+    const delay = 2600 + Math.random() * 3800;
+    setTimeout(() => {
+      blink(target);
+      // occasionally do a quick double-blink for a wink-like feel
+      if (Math.random() < 0.25) {
+        setTimeout(() => blink(target), 320);
+      }
+      scheduleBlink(target);
+    }, delay);
+  }
+
+  if (markWrap) scheduleBlink(markWrap);
 
   intro.addEventListener("click", () => {
     if (intro.style.display === "none") return;
