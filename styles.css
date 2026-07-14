@@ -7,31 +7,14 @@
   --white: #F5F3ED;
   --grey: #9AA39C;
 
-  --font-display: "Fraunces", "Georgia", serif;
-  --font-body: "Space Mono", "SF Mono", ui-monospace, monospace;
+  --font-display: "Bebas Neue", "Arial Narrow", sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
-
-.wm-bacu {
-  font-family: var(--font-display);
-  font-optical-sizing: auto;
-  font-style: normal;
-  font-weight: 800;
-  letter-spacing: -0.01em;
-}
-
-.wm-creative {
-  font-family: var(--font-body);
-  font-weight: 400;
-  font-size: 1em;
-  letter-spacing: 0.02em;
-  color: var(--grey);
-  vertical-align: middle;
-}
 
 html, body {
   margin: 0;
@@ -89,9 +72,11 @@ body {
 }
 
 #wordmark {
-  font-size: clamp(28px, 8vw, 40px);
-  letter-spacing: 0;
-  margin: 0 0 16px;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(38px, 11vw, 56px);
+  letter-spacing: 0.05em;
+  margin: 0 0 14px;
   color: var(--white);
   white-space: nowrap;
 }
@@ -100,7 +85,7 @@ body {
   font-family: var(--font-body);
   font-weight: 400;
   font-size: 11.5px;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--grey);
   margin: 0;
@@ -136,8 +121,10 @@ body {
 }
 
 .hub-title {
-  font-size: clamp(24px, 6.6vw, 30px);
-  letter-spacing: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(32px, 9vw, 42px);
+  letter-spacing: 0.04em;
   margin: 0 0 14px;
   white-space: nowrap;
 }
@@ -146,7 +133,7 @@ body {
   font-family: var(--font-body);
   font-weight: 400;
   font-size: 11px;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--grey);
   margin: 0;
@@ -164,16 +151,16 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 21px 24px;
+  padding: 18px 24px;
   border-radius: 999px;
   border: 1px solid rgba(245, 243, 237, 0.14);
   background: rgba(245, 243, 237, 0.02);
   text-decoration: none;
   text-align: center;
   color: var(--white);
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 13.5px;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 21px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   overflow: hidden;
@@ -205,11 +192,12 @@ body {
 .card-sub {
   position: relative;
   font-family: var(--font-body);
-  font-size: 12.5px;
-  letter-spacing: 0.01em;
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   color: var(--grey);
-  margin-top: 4px;
-  font-weight: 400;
+  margin-top: 2px;
+  font-weight: 500;
 }
 
 .card-arrow {
@@ -223,20 +211,15 @@ body {
 }
 
 .card--featured {
-  padding: 26px 26px;
+  padding: 24px 26px;
   border-radius: 28px;
   background: linear-gradient(155deg, rgba(62, 140, 111, 0.14), rgba(22, 52, 42, 0.18));
   border-color: rgba(92, 176, 138, 0.32);
 }
 
 .card--featured .card-label {
-  font-family: var(--font-display);
-  font-optical-sizing: auto;
-  font-style: italic;
-  font-weight: 300;
-  font-size: 23px;
-  letter-spacing: 0.06em;
-  color: var(--white);
+  font-size: 30px;
+  letter-spacing: 0.04em;
 }
 
 .hub-footer {
