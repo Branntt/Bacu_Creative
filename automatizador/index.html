@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Automatizador Audiovisual — BACU CREATIVE</title>
+<meta name="description" content="Subí un archivo HTML y obtené el video listo. Automatizador audiovisual de BACU CREATIVE.">
+<meta name="theme-color" content="#0A0C0A">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="back-link" href="../index.html">← BACU CREATIVE</a>
+  <h1 class="tool-title">Automatizador Audiovisual</h1>
+  <p class="tool-tagline">Poné el HTML. Sacá el video.</p>
+</header>
+
+<main class="wrap">
+
+  <div id="errorBanner" class="banner banner--error" hidden></div>
+  <div id="compatNote" class="banner banner--warn" hidden></div>
+
+  <section id="dropzone" class="dropzone" tabindex="0" role="button" aria-label="Elegir archivo HTML">
+    <input id="fileInput" type="file" accept=".html,.htm,text/html" hidden>
+    <span class="dropzone-icon" aria-hidden="true">⌁</span>
+    <p class="dropzone-title">Arrastrá tu archivo .html acá</p>
+    <p class="dropzone-sub">o hacé clic para elegirlo — nada más</p>
+  </section>
+
+  <div id="fileInfo" class="file-info" hidden>
+    <span class="file-name"></span>
+    <span class="file-meta"></span>
+  </div>
+
+  <section id="workSection" class="panel" hidden>
+    <h2 id="workTitle" class="panel-title">Vista previa</h2>
+    <div class="frame-wrap">
+      <iframe id="previewFrame" class="preview-frame" title="Vista previa del HTML" sandbox="allow-scripts allow-same-origin allow-forms" allow="autoplay"></iframe>
+    </div>
+
+    <div id="idleControls" class="controls-row">
+      <label class="duration-label" for="durationInput">
+        Duración (segundos)
+        <input id="durationInput" type="number" min="1" max="120" step="1">
+      </label>
+      <button id="recordBtn" class="btn btn--primary" type="button">Grabar y exportar video</button>
+    </div>
+    <p id="idleHint" class="hint">Vas a tener que confirmar “compartir esta pestaña” una sola vez — es el navegador, no nosotros. Después todo es automático.</p>
+
+    <div id="recordingControls" class="recording-controls" hidden>
+      <div class="recording-indicator">
+        <span class="rec-dot" aria-hidden="true"></span>
+        <span id="recordingStatus">Grabando…</span>
+      </div>
+      <button id="stopBtn" class="btn btn--ghost" type="button">Detener y descargar ahora</button>
+    </div>
+  </section>
+
+  <section id="resultSection" class="panel" hidden>
+    <h2 class="panel-title">Listo</h2>
+    <video id="resultVideo" class="result-video" controls playsinline></video>
+    <div class="controls-row">
+      <button id="downloadBtn" class="btn btn--primary" type="button">Descargar .webm</button>
+      <button id="convertBtn" class="btn btn--ghost" type="button">Convertir a MP4</button>
+    </div>
+    <p id="convertStatus" class="hint" hidden></p>
+    <button id="resetBtn" class="btn btn--text" type="button">Grabar otro archivo</button>
+  </section>
+
+  <footer class="tool-footer">
+    <p>Funciona 100% en tu navegador — no se sube ningún archivo a ningún servidor.</p>
+    <p>Tip: si tu HTML sabe cuándo termina su animación, podés avisarle a esta página antes de tiempo con <code>window.parent.postMessage({type:'automatizador:done'}, '*')</code>. Si no, se corta a los segundos que pongas arriba. También podés fijar la duración vos mismo agregando <code>&lt;meta name="duracion" content="8"&gt;</code> en el HTML.</p>
+    <p>Recomendado: Chrome o Edge actualizados (usan la opción de compartir "esta pestaña" automáticamente).</p>
+  </footer>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
